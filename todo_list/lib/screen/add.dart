@@ -6,6 +6,7 @@ class TodoAddPage extends StatefulWidget {
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
+  // 入力されたテキストを保存する変数
   String _text = '';
 
   @override
@@ -19,9 +20,12 @@ class _TodoAddPageState extends State<TodoAddPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // 入力されたテキストを表示
             Text(_text, style: TextStyle(color: Colors.blue)),
             const SizedBox(height: 8),
+            // テキストを入力するフィールド
             TextField(
+              // 入力されたテキストの値がvalueに入り、変更があればsetStateで更新をする
               onChanged: (String value) {
                 setState(() {
                   _text = value;
@@ -33,6 +37,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
+                  // popで1つ前の画面に戻り、引数に_textをもたせることで値を受け渡す
                   Navigator.of(context).pop(_text);
                 },
                 child: Text('リスト追加', style: TextStyle(color: Colors.blue)),
@@ -43,6 +48,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
+                  // キャンセル時は値の受け渡しをしないため、引数はなし
                   Navigator.of(context).pop();
                 },
                 child: Text('キャンセル'),
